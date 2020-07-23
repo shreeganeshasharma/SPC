@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CS-Stats Project">
+    <meta name="author" content="Shree Ganesha Sharma M S">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Test</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/grayscale.min.css" rel="stylesheet">
+    
+</head>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">SQC</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="doc.html">Documentation</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link js-scroll-trigger" href="#test">Test</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+      <div class="mx-auto text-center">
+        <h1 class="mx-auto my-0 text-uppercase">Test</h1>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5 text-justify">Enter your data file in the below form. Or, enter the data as a table of rows and columns, each data point in a row separated by a comma or space and enter the next row in the next line</h2>
+        <a href="#test" class="btn btn-primary js-scroll-trigger">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <body class="bg-light">
+
+    <div class="container">
+      	<div class="py-5 text-center">
+        	<img class="img-fluid mx-auto mb-4" src="../img/ipad.png" alt="">
+       		<h2> <strong> Input form </strong></h2>
+            <hr/>
+        </div>
+
+    <div class="col-sm order-md-1" id="test">
+    <div class="container">
+    <form class="needs-validation" action="../php/upload.php" method="POST" enctype="application/x-www-form-urlencoded">
+        <h4 class="mb-3 text-center">Basic Information</h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="firstName">First name<span class="text-muted"> (Optional)</span></label>
+                <input type="text" class="form-control" id="firstName" placeholder="Mobb" value="" name="Name">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="lastName">Last name<span class="text-muted"> (Optional)</span></label>
+                <input type="text" class="form-control" id="lastName" placeholder="Deep" value="" name="Name">
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="detail">Enter company/college and designation <span class="text-muted">(Optional)</span></label>
+          <input type="text" class="form-control" id="detail" placeholder="Halfway crook at 41st side, Queensbridge, Queens" name="Designation">
+        </div>
+
+        <div class="mb-3">
+           	<label for="email">Email <span class="text-muted">(Required)</span></label>
+            <input type="email" class="form-control" id="email" placeholder="shook_ones@player.com" name="Mail" required>
+            <div class="invalid-feedback">
+                Please enter a valid email address for occassional surveys. They won't be sold.
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="info">Submit</button>
+        </div>
+        <hr/>
+    </div>
+    </form>
+
+        <div class="container-fluid">
+		<h4 class="mb-3 text-center">Numerical Data</h4>
+        <!--
+		<form class="needs-validation" action="../php/upload.php" method="POST" enctype="text">
+
+        <div class="mb-3">
+            <label for="address">Enter data</label>
+            <input type="text" class="form-control" id="address" placeholder="Enter numerical data" name="Data">
+            <div class="invalid-feedback">
+                Please enter the data for Histogram, Scatter Plot, and Control charts.
+            </div>
+        </div>
+		</form>
+		-->
+		<form class="needs-validation" novalidate action="../php/upload.php" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="address">Upload data</label>
+            <div class="custom-file">
+				<label class="custom-file-label" for="inputFile">Click here to upload a file.</label>
+            	<input type="file" name="file" class="custom-file-input" id="inputFile" aria-describedby="inputFile">
+          	</div>
+            <div class="invalid-feedback">
+              Please enter the data for Histogram, Scatter Plot, and Control charts.
+              .txt, .csv, .xlsx, .json, .html formats are accepted.
+            </div>
+        </div>
+
+        <div>
+                <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="filer">Upload</button>
+        </div>
+        </form>
+        </div>
+    <hr/>
+
+	<form class="needs-validation" action="../php/upload.php" method="POST">
+    <h4 class="mb-3 text-center">Other Data</h4>
+    <div class="container-fluid">
+    <h5 class="mb-3 text-center">Cause-and-effect diagram</h5>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+            <label for="country">Man</label>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address1" name="Shifts" value="Shifts">
+                <label class="custom-control-label" for="same-address1">Shifts</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address2" name="Training" value="Training">
+                <label class="custom-control-label" for="same-address2">Training</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address3" name="Operators" value="Operators">
+                <label class="custom-control-label" for="same-address3">Operators</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address4" name="Health" value="Health">
+                <label class="custom-control-label" for="same-address4">Health</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address5" name="Salary" value="">
+                <label class="custom-control-label" for="same-address5">Salary</label>
+            </div>
+        </div>
+
+        <div class="col-md-5 mb-3">
+            <label for="country">Machine</label>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address6">
+                <label class="custom-control-label" for="same-address6">Speed</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address7">
+                <label class="custom-control-label" for="same-address7">Wear and tear</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address8">
+                <label class="custom-control-label" for="same-address8">Cost</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address9">
+                <label class="custom-control-label" for="same-address9">Improper handling</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address0">
+                <label class="custom-control-label" for="same-address0">Age</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+            <label for="country">Material</label>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address11">
+                <label class="custom-control-label" for="same-address11">Quality</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address12">
+                <label class="custom-control-label" for="same-address12">Quantity</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address13">
+                <label class="custom-control-label" for="same-address13">Suppliers</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address14">
+                <label class="custom-control-label" for="same-address14">Cost</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address15">
+                <label class="custom-control-label" for="same-address15">Transportation</label>
+            </div>
+        </div>
+
+        <div class="col-md-5 mb-3">
+            <label for="country">Method</label>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address16">
+                <label class="custom-control-label" for="same-address16">Algorithm</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address17">
+                <label class="custom-control-label" for="same-address17">Models</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address18">
+                <label class="custom-control-label" for="same-address18">Coding</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address19">
+                <label class="custom-control-label" for="same-address19">Testing</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address20">
+                <label class="custom-control-label" for="same-address20">Order</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 mb-3">
+            <label for="country">Measurement</label>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address21">
+                <label class="custom-control-label" for="same-address21">Precision</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address22">
+                <label class="custom-control-label" for="same-address22">Calibration</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address23">
+                <label class="custom-control-label" for="same-address23">Inspector</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address24">
+                <label class="custom-control-label" for="same-address24">Standard</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address25">
+                <label class="custom-control-label" for="same-address25">Units</label>
+            </div>
+        </div>
+
+        <div class="col-md-5 mb-3">
+            <label for="country">Environment</label>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address26">
+                <label class="custom-control-label" for="same-address26">Weather</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address27">
+                <label class="custom-control-label" for="same-address27">Calamities</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address28">
+                <label class="custom-control-label" for="same-address28">Epidemics</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address29">
+                <label class="custom-control-label" for="same-address29">Stocks fall</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address30">
+                <label class="custom-control-label" for="same-address30">Political changes</label>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="fishbone">Submit</button>
+    </div>
+    </div>
+    <hr class="mb-4">
+    <div class="container-fluid">
+    <div class="text-center">
+        <h4> Check list </h4>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address31" name="Plan" value="Planning">
+        <label class="custom-control-label" for="same-address31">Planning</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address32" name="Model" value="Modelling">
+        <label class="custom-control-label" for="same-address32">Modelling</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address33" name="Approve" value="Approval">
+        <label class="custom-control-label" for="same-address33">Approval</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address34" name="Raw" value="Raw Materials Procurement">
+        <label class="custom-control-label" for="same-address34">Procuring raw materials</label>
+    </div>
+	<div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address35" name="Machine" value="Machinery Procurement">
+        <label class="custom-control-label" for="same-address35">Procuring machinery</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address36" name="Mfg" value="Manufacturing">
+        <label class="custom-control-label" for="same-address36">Manufacturing</label>
+    </div>
+	<div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address37" name="QC" value="Quality Control">
+        <label class="custom-control-label" for="same-address37">Quality check</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address38" name="Pkg" value="Packaging">
+        <label class="custom-control-label" for="same-address38">Packaging</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address39" name="Bill" value="Billing">
+        <label class="custom-control-label" for="same-address39">Billing</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address40" name="Ship" value="Shipping">
+        <label class="custom-control-label" for="same-address40">Shipping</label>
+    </div>
+	<div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address41" name="Pay" value="Payment">
+        <label class="custom-control-label" for="same-address41">Payment</label>
+    </div>
+	    <hr class="mb-4">
+    <div>
+        <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="check">Submit</button>
+    </div>
+
+    <hr class="mb-4">
+	<a href="/result.html">
+    <button class="btn btn-primary btn-lg btn-block" type="submit" value="Submit" name="final">Continue to Result </button>
+	</a>
+    </form>
+    </div>
+    </div>
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <div class="social d-flex justify-content-center">
+            <i class="fa fa-github" style="font-size:48px;color:black"><a href="https://github.com/shreeganeshasharma/SPC" class="mx-2"></a></i>
+            <i class="fa fa-github-alt" style="font-size:48px;color:#f090f0"><a href="https://github.com/SHEKI-gottalla" class="mx-2"></a></i>
+        </div>
+        <p class="mb-1">WHATS THAT JACKET, MARGIELA?</p>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../js/jquery-slim.min.js"><\/script>')</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../js/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="../js/grayscale.min.js"></script>
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+
+
+  </body>
+</html>
