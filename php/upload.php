@@ -113,14 +113,15 @@ function checkList(){
 		//print_r($checkIndex);
 		foreach($checkList as $x){
 			if(isset($_POST[$x])){
-				//echo $_POST[$x]." complete<br/>";
+				echo "&#x2611".$_POST[$x]." complete<br/>";
 				$checkIndex[$check]++;
-				$check++;
 			}else{
-				//echo $x." incomplete<br/>";
+				echo "&#x2612".$x." incomplete<br/>";
 			}
+			$check++;
 		}
 		//print_r($checkIndex);
+		
 		echo $check." steps are complete<br/>";
 		echo sizeof($checkList) - $check." steps are incomplete<br/>";
 		if($check == 10){
