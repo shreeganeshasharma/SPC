@@ -1,5 +1,4 @@
 <?php
-//echo "All star easy bessie ";
 //print_r($_POST);
 
 if(isset($_POST['filer'])){
@@ -38,8 +37,9 @@ if(isset($_POST['filer'])){
 		echo "Please enter the data for Histogram, Scatter Plot, and Control charts. Only .txt, .csv, .xlsx, .json, .html formats are accepted.";
 	}
 }
-
-function fishbone(){
+//Fishbone
+//TBD - like checklist.php
+/*function fishbone(){
 	if(isset($_POST['fishbone'])){
 		if($Shifts == "Shifts"){
 			echo 'yes';
@@ -57,13 +57,12 @@ function fishbone(){
 			echo 'yes';
 		}
 	}
-}
-
+}*/
 //fishbone();
-
-function checkList(){
-	//To be improved on test.html page
-	//Let em add more fields
+//Checklist
+//Done - To be improved on test.html page
+//TBD - Let em add more fields
+/*function checkList(){
 	if(isset($_POST['check'])){
 		echo "<h3>Checklist</h3><br/>";
 		$check = 0;
@@ -106,29 +105,9 @@ function checkList(){
 		if(isset($_POST['Pay'])){
 			echo "Payment done<br/>";
 			$check++;
-		}*/
-		
-		$checkList = array('Plan', 'Model', 'Approve', 'Raw','Machine','Mfg','QC','Pkg','Bill','Ship','Pay');
-		$checkIndex = array_fill(0,count($checkList),0);
-		//print_r($checkIndex);
-		foreach($checkList as $x){
-			if(isset($_POST[$x])){
-				echo "&#x2611".$_POST[$x]." complete<br/>";
-				$checkIndex[$check]++;
-			}else{
-				echo "&#x2612".$x." incomplete<br/>";
-			}
-			$check++;
 		}
-		//print_r($checkIndex);
-		
-		echo $check." steps are complete<br/>";
-		echo sizeof($checkList) - $check." steps are incomplete<br/>";
-		if($check == 10){
-			echo "Project Completed<br/>";
-		}
-	}
-}
-
-checkList();
+*/
+//checkList();
+//TBD - Pareto chart
+//TBD - Defect Concentration diagram
 ?>
