@@ -1,14 +1,4 @@
 """
-Statistical Process Control Tool
-Author: Shree Ganesha Sharma M S
-
-Abstract and Objective
-
-Quality can be defined as "fitness for use". If a product or service is available in the market, we look for some characteristic properties, and desire numerous dimensions, which make it superior over other products, and improve its sales. They can be features, aesthetic, performance, cost, serviceability etc.
-
-Therefore, it is paramount that we understand quality, achieve it, and control it. This is the aim of Statistical Quality Control (SQC). We can achieve and control quality through Design of experiments, Process control, and Product control.
-
-Process Control is a continuous process during the manufacturing, which involves sampling the items and measuring their properties and hence the quality.
 In this project, we aim to implement 7 tools of Statistical Process Control, also called 7 magnificent tools of quality. They are:
 1. Histogram - to find normality in the process,
 2. Scatter diagram - to find correlation and regression analysis,
@@ -19,75 +9,58 @@ In this project, we aim to implement 7 tools of Statistical Process Control, als
 7. Control chart - to find the band of acceptability of product.
 """
 
-#import necessary modules for inbuilt functions
-import math
-#import random
+"""import necessary modules for inbuilt functions"""
+#import numpy
 import scipy.stats as stat
-import pandas as pd
-#import csv
+#import scipy
 import matplotlib.pyplot as plt
-import requests
+import pandas as pd
+#import requests
 
-"""
-	make responsive
-	def integrate(filename):
-		f = open("/home/spikebuster/ycm/sample/Sample.csv", 'r')
-		f = open("/home/spikebuster/ycm/sample/Sample.html", 'r')
-		f = open("/home/spikebuster/ycm/sample/Sample.xlsx", 'r')
-		f = open("/home/spikebuster/ycm/sample/Sample.pdf", 'r')
-"""
-
-f = open("/home/spikebuster/ycm/sample/Sample.txt", 'r')
-#f = open("/home/spikebuster/ycm/sample/eg.csv", 'r')
-
-url = "https://w3schools.com/python/demopage.htm"
-payload = {'firstName': 'Ganesh'}
-
-# GET
-r = requests.get(url)
-#print(r.text)
-# GET with params in URL
-#r = requests.get(url, params=payload)
-
-# POST with form-encoded data
-r = requests.post(url, data=payload)
+"""File operations"""
+f = open("../sample/Sample.txt", 'r')
 
 text = f.read()
-print "text"
-print text, len(text)
+#print("text")
+#print(text)
+#print(type(text))
+#print("len(text)")
+#print(len(text))
 
 lines = text.split()
+#print("lines")
+#print(lines)
 m = len(lines)
+#print(len(lines))
 
 words = []
 for line in lines:
 	words.append(line.split(','))
-
-print "lines"
-print lines, len(lines)
-
-print "words"
-print words, len(words)
+#print("words")
+#print(words)
+#print(len(words))
 
 colTitles = words[0]
 n = len(colTitles)
 n = n - 1
-print "colTitles"
-print colTitles, len(colTitles)
+#print("colTitles")
+#print(colTitles)
+#print(len(colTitles))
 
 rowTitles = []
 for i in range(m):
 	rowTitles.append(words[i].pop(0))
-print "rowTitles"
-print rowTitles, len(rowTitles)
+#print("rowTitles")
+#print(rowTitles)
+#print(len(rowTitles))
 
 Y = []
 for i in range(1,m):
 	for j in range(n):
 		Y.append(words[i][j])
 m = m - 1
-#print m, n
-#print Y
+# print(m,n)
+#print(Y)
 
 for y in Y:
 	try:
@@ -95,25 +68,28 @@ for y in Y:
 	except:
 		y = 0
 	Y.append(y)
-
-print "Y"
-print Y, len(Y)
+# print("Y")
+# print(Y)
+# print(len(Y))
 
 X = []
 for i in range(m):
 	X.append(Y[i*n:(i+1)*n])
-print "X"
-print X, len(X)
+# print("X")
+# print(X)
+# print(len(X))
+m = len(X)
+n = len(X[1])
+# print("m = ", m)
+# print("n = ", n)
 
-print "m = ", m
-print "n = ", n
-
+"""Stats Operations"""
 #filer
 filer = 0
-
-#sparse-ing
+#sparse-ing - isn't it done? except = 0
 #make these tuples
-def histog(arr):
+
+def desc(arr):
 	s = 0
 	ssd = 0
 	scd = 0
@@ -124,8 +100,7 @@ def histog(arr):
 
 	#Mean, first central moment
 	m1 = s / len(arr)
-	print "mean = ", m1
-
+	print("Arithmetic mean = ", m1)
 
 	for a in arr:
 		ssd += ((a - m1) ** 2)
@@ -134,141 +109,107 @@ def histog(arr):
 
 	#Variance, Second central moment
 	m2 = ssd / len(arr)
-	print "var = ", m2
+	print("Variance = ", m2)
 
 	#Standard deviation
-	sd = math.sqrt(m2)
-	print "sd = ", sd
+	#sd = scipy.sqrt(m2)
+	#print("sd = ", sd)
 
 	#Third central moment
 	m3 = scd / len(arr)
 	#print "Third Moment(Y) = ", m3
-
+	
+	#Skewness
+	skew = m3 / (m2 ** (3/2))
+	print("Skewness = ", skew)
+	if skew > 0:
+		print("Positively Skewed")
+	elif skew < 0:
+		print("Negatively Skewed data")
+	else:
+		print("Symmetric data")
+		
 	#Fourth central moment
 	m4 = sfd / len(arr)
 	#print "Fourth Moment(Y) = ", m4
 
-	#Skewness
-	skew = m3 / (m2 ** (3/2))
-	print "Skewness = ", skew
-	if skew > 0:
-		print "Positively Skewed"
-	elif skew < 0:
-		print "Negatively Skewed data"
-	else:
-		print "Symmetric data"
-
 	#Kurtosis
 	kurt = m4 / (m2 ** 2)
 	exkurt = kurt - 3
-	print "Kurtosis = ", kurt
-	print "Excess Kurtosis = ", exkurt
+	print("Kurtosis = ", kurt)
+	print("Excess Kurtosis = ", exkurt)
 	if kurt > 3:
-		print "Leptokurtic data"
+		print("Leptokurtic data")
 	elif kurt < 3:
-		print "Platykurtic data"
+		print("Platykurtic data")
 	else:
-		print "Mesokurtic data"
-
-	im = plt.figure()
-	plt.hist(arr)
-	plt.show()
-	im.savefig("sample/%d.pdf" %filer, bbox_inches="tight")
-	global filer
-	filer += 1
-
-	#print "Geometric mean"
-	#print stat.gmean(arr)
-
-	#print "Harmonic mean"
-	#print stat.hmean(arr)
-
-	print "Mode"
-	print stat.mode(arr)
-
-
+		print("Mesokurtic data")
+		
+	print("Geometric mean = ", stat.gmean(arr))
+	print("Harmonic mean = ", stat.hmean(arr))
+	print("Mode = ", stat.mode(arr))
+	
 	#return summary = {}
 	#median
 	#quartile
 	#box plot
 	#most likely estimator
+	
+	im = plt.figure()
+	plt.hist(arr)
+	plt.show()
+	global filer
+	im.savefig("../sample/desc%d.pdf" %filer, bbox_inches="tight")
+	filer += 1
 	return filer
 
 #Histogram of the entire data set
-#histog(Y)
+#desc(Y)
 
-#Histogram for all rows
+#Histogram for some rows
 #for i in range(3):
-	#histog(X[i])
+	#desc(X[i])
 
-#Histogram for each column
-#for j in range(n):
-#	for i in range(m):
-#		plt.hist()
-#	plt.show()
-
-"""
-Scat
-	output: scatter diagram, correlation, regression
-
-	#for i = 1:n in X plot(row[i])
-	#for j = 1:m in X plot(col[j])
-	#Scatter diagram
-	plot(X)
-	#for row[i], row[j] in X corr(row[i], row[j])
-	#for col[j], col[j] in X corr(col[i], col[j])
-	corr(X)
-	corr(Y)
-	linearRegression(X)
-	linearRegression(Y)
-
-"""
 def scat(arr1, arr2):
 	plt.subplot(2,1,1)
 	plt.plot(arr1)
 	plt.subplot(2,1,2)
-	plt.plot(arr2)	
+	plt.plot(arr2)
 	plt.show()
-
+	plt.plot(arr1,arr2)
+	plt.show()
 	im = plt.figure()
 
 	for i in range(len(arr1)):
 		for j in range(len(arr2)):
 			plt.scatter(arr1[i],arr2[j])
 	plt.show()
-	im.savefig("sample/%d.pdf" %filer, bbox_inches="tight")
-
-
 	global filer
+	im.savefig("../sample/scat%d.pdf" %filer, bbox_inches="tight")
 	filer += 1
+	return filer
 
-	return
-
+"""
 #scatter all vs all
 #Too demanding as m*n increases
 #scat(Y,Y)
 
 #scatter each row against itself
-#for i in range(len(X)):
-#for i in range(3):
-	#scat(X[i], X[i])
+for i in range(2):
+	for j in range(2):
+		scat(X[i], X[j])
 
+"""
 #correlation matrix
-#df = pd.DataFrame(data=X)
+df = pd.DataFrame(data=X)
 #print "Correlation Matrix"
-#print df.corr()
+print(df.corr())
 
+"""
 #def Pareto(name):
 	#par = open("/home/spikebuster/ycm/sample/pareto.csv", 'r')
 
 #Pareto(Y)
-"""
-
-#TBD on frontend
-algorithm CheckList
-	input:	list of complaints
-			list of to be done items
-			drop down
 
 #TBD on frontend
 algorithm CauseEffect
@@ -321,4 +262,47 @@ algorithm DefectConcentration
 	#from charts
 	Chance cause
 	Assignable cause
+	
+#Done on frontend
+algorithm CheckList
+	input:	list of complaints
+			list of to be done items
+			drop down
+
+#POST with form-encoded data
+#r = requests.post("http://localhost/spc.com/html/test.html", data=payload)
+#print(r.text)
+"""
+
+"""
+	make responsive
+	def filer(filename):
+		f = open("/home/spikebuster/ycm/sample/Sample.csv", 'r')
+		f = open("/home/spikebuster/ycm/sample/Sample.html", 'r')
+		f = open("/home/spikebuster/ycm/sample/Sample.xlsx", 'r')
+		f = open("/home/spikebuster/ycm/sample/Sample.pdf", 'r')
+"""
+
+"""
+	#Histogram for each column
+	for j in range(n):
+		for i in range(m):
+			plt.hist()
+		plt.show()
+"""
+
+"""
+Scat
+	output: scatter diagram, correlation, regression
+
+	#for i = 1:n in X plot(row[i])
+	#for j = 1:m in X plot(col[j])
+	#Scatter diagram
+	plot(X)
+	#for row[i], row[j] in X corr(row[i], row[j])
+	#for col[j], col[j] in X corr(col[i], col[j])
+	corr(X)
+	corr(Y)
+	linearRegression(X)
+	linearRegression(Y)
 """
