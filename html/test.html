@@ -1,6 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="CS-Stats Project">
@@ -20,13 +22,13 @@
 
     <!-- Custom styles for this template -->
     <link href="../css/grayscale.min.css" rel="stylesheet">
-    
+	
 </head>
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">SQC</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">SPC - Test</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>
@@ -52,7 +54,9 @@
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
         <h1 class="mx-auto my-0 text-uppercase">Test</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5 text-justify">Enter your data file in the below form. Or, enter the data as a table of rows and columns, each data point in a row separated by a comma or space and enter the next row in the next line</h2>
+        <h2 class="text-white-50 mx-auto mt-2 mb-5 text-justify">Enter your data in the below form. Upload the numerical data for histogram, scatter plot, control charts. text(.txt) and csv(.csv) files are accepted. </h2>
+		<h2 class="text-white-50 mx-auto mt-2 mb-5 text-center">Submit to get the results</h2>
+		<!-- Or, enter the data as a table of rows and columns, each data point in a row separated by a comma or space and enter the next row in the next line-->
         <a href="#test" class="btn btn-primary js-scroll-trigger">Get Started</a>
       </div>
     </div>
@@ -62,61 +66,15 @@
 
     <div class="container">
       	<div class="py-5 text-center">
-        	<img class="img-fluid mx-auto mb-4" src="../img/ipad.png" alt="">
-       		<h2> <strong> Input form </strong></h2>
+        	<h2> <strong> Input form </strong></h2>
             <hr/>
         </div>
 
     <div class="col-sm order-md-1" id="test">
-    <div class="container">
-    <form class="needs-validation" action="../php/upload.php" method="POST" enctype="application/x-www-form-urlencoded">
-        <h4 class="mb-3 text-center">Basic Information</h4>
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="firstName">First name<span class="text-muted"> (Optional)</span></label>
-                <input type="text" class="form-control" id="firstName" placeholder="Mobb" value="" name="Name">
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="lastName">Last name<span class="text-muted"> (Optional)</span></label>
-                <input type="text" class="form-control" id="lastName" placeholder="Deep" value="" name="Name">
-            </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="detail">Enter company/college and designation <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="detail" placeholder="Halfway crook at 41st side, Queensbridge, Queens" name="Designation">
-        </div>
-
-        <div class="mb-3">
-           	<label for="email">Email <span class="text-muted">(Required)</span></label>
-            <input type="email" class="form-control" id="email" placeholder="shook_ones@player.com" name="Mail" required>
-            <div class="invalid-feedback">
-                Please enter a valid email address for occassional surveys. They won't be sold.
-            </div>
-        </div>
-
-        <div>
-            <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="info">Submit</button>
-        </div>
-        <hr/>
-    </div>
-    </form>
-
-        <div class="container-fluid">
+	
+    <div class="container-fluid">
 		<h4 class="mb-3 text-center">Numerical Data</h4>
-        <!--
-		<form class="needs-validation" action="../php/upload.php" method="POST" enctype="text">
-
-        <div class="mb-3">
-            <label for="address">Enter data</label>
-            <input type="text" class="form-control" id="address" placeholder="Enter numerical data" name="Data">
-            <div class="invalid-feedback">
-                Please enter the data for Histogram, Scatter Plot, and Control charts.
-            </div>
-        </div>
-		</form>
-		-->
-		<form class="needs-validation" novalidate action="../php/upload.php" method="POST" enctype="multipart/form-data">
+        <form class="needs-validation" novalidate action="../php/upload.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="address">Upload data</label>
             <div class="custom-file">
@@ -128,39 +86,41 @@
               .txt, .csv, .xlsx, .json, .html formats are accepted.
             </div>
         </div>
-
         <div>
-                <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="filer">Upload</button>
+            <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="filer">Upload</button>
         </div>
         </form>
-        </div>
-    <hr/>
-
-	<form class="needs-validation" action="../php/upload.php" method="POST">
+    </div>
+	
+    <hr class="mb-4">
     <h4 class="mb-3 text-center">Other Data</h4>
-    <div class="container-fluid">
-    <h5 class="mb-3 text-center">Cause-and-effect diagram</h5>
+    	
+	<!-- Cause and effect diagram -->
+	<form class="needs-validation" novalidate action="../php/fishbone.php" method="POST" enctype="multipart/form-data">
+	<div class="container-fluid">
+    <h4 class="mb-3 text-center">Cause-and-effect diagram</h4>
+	<hr class="mb-4">
     <div class="row">
         <div class="col-md-5 mb-3">
             <label for="country">Man</label>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address1" name="Shifts" value="Shifts">
+                <input type="checkbox" class="custom-control-input" id="same-address1" name="1" value="1">
                 <label class="custom-control-label" for="same-address1">Shifts</label>
             </div>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address2" name="Training" value="Training">
+                <input type="checkbox" class="custom-control-input" id="same-address2" name="2" value="2">
                 <label class="custom-control-label" for="same-address2">Training</label>
             </div>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address3" name="Operators" value="Operators">
+                <input type="checkbox" class="custom-control-input" id="same-address3" name="3" value="3">
                 <label class="custom-control-label" for="same-address3">Operators</label>
             </div>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address4" name="Health" value="Health">
+                <input type="checkbox" class="custom-control-input" id="same-address4" name="4" value="4">
                 <label class="custom-control-label" for="same-address4">Health</label>
             </div>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address5" name="Salary" value="">
+                <input type="checkbox" class="custom-control-input" id="same-address5" name="5" value="5">
                 <label class="custom-control-label" for="same-address5">Salary</label>
             </div>
         </div>
@@ -282,20 +242,24 @@
                 <label class="custom-control-label" for="same-address29">Stocks fall</label>
             </div>
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="same-address30">
+                <input type="checkbox" class="custom-control-input" id="same-address30" name="30" value="30">
                 <label class="custom-control-label" for="same-address30">Political changes</label>
             </div>
         </div>
     </div>
-
     <div>
         <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="fishbone">Submit</button>
     </div>
     </div>
+	</form>
+	
     <hr class="mb-4">
+	
+	<!-- Check List -->
+	<form class="needs-validation" action="../php/checklist.php" method="POST" enctype="multipart/form-data">
     <div class="container-fluid">
     <div class="text-center">
-        <h4> Check list </h4>
+        <h4 class="mb-3 text-center"> Check list </h4>
     </div>
     <div class="custom-control custom-checkbox">
         <input type="checkbox" class="custom-control-input" id="same-address31" name="Plan" value="Planning">
@@ -341,28 +305,223 @@
         <input type="checkbox" class="custom-control-input" id="same-address41" name="Pay" value="Payment">
         <label class="custom-control-label" for="same-address41">Payment</label>
     </div>
-	    <hr class="mb-4">
+	<br/>
     <div>
         <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="check">Submit</button>
     </div>
+	</div>
+	</form>
+	
+	<hr class="mb-4">
+	
+	<!-- Pareto Chart -->
+	<form class="needs-validation" action="../php/pareto.php" method="POST" enctype="multipart/form-data">
+    <div class="container-fluid"> 
+	<div class="text-center">
+        <h4 class="mb-3 text-center"> Pareto chart </h4>
+	</div>
+    <!--Table-->
+	<div class="table-responsive">
+        <table class="table table-striped mb-4">
 
-    <hr class="mb-4">
-	<a href="/result.html">
-    <button class="btn btn-primary btn-lg btn-block" type="submit" value="Submit" name="final">Continue to Result </button>
-	</a>
-    </form>
+          <!--Table head-->
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Source of defect</th>
+              <th>Frequency of occurence</th>
+            </tr>
+          </thead>
+          <!--Table head-->
+
+          <!--Table body-->
+          <tbody>
+            <tr class="table-info">
+              <th scope="row">1</th>
+              <td>
+			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address31">Planning</label>
+			</td>
+              <td><input type="range" id="same-address31" name="same-address31" min="0" max="100"></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>
+			  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address32">Modelling</label></td>
+              <td><input type="range" id="same-address32" name="same-address32" min="0" max="100"></td>
+            </tr>
+            
+			<tr class="table-info">
+              <th scope="row">3</th>
+              <td>
+			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address33">Approval</label>
+			</td>
+              <td><input type="range" id="same-address33" name="same-address33" min="0" max="100"></td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>
+			  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address34">Procuring raw materials</label></td>
+              <td><input type="range" id="same-address34" name="same-address34" min="0" max="100"></td>
+            </tr>
+			
+			<tr class="table-info">
+              <th scope="row">5</th>
+              <td>
+			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address35">Procuring machinery</label>
+			</td>
+              <td><input type="range" id="same-address35" name="same-address35" min="0" max="100"></td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>
+			  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address36">Manufacturing</label></td>
+              <td><input type="range" id="same-address36" name="same-address36" min="0" max="100"></td>
+            </tr>
+			
+			<tr class="table-info">
+              <th scope="row">7</th>
+              <td>
+			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address37">Quality check</label>
+			</td>
+              <td><input type="range" id="same-address37" name="same-address37" min="0" max="100"></td>
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td>
+			  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address38">Packaging</label></td>
+              <td><input type="range" id="same-address38" name="same-address38" min="0" max="100"></td>
+            </tr>
+			
+			<tr class="table-info">
+              <th scope="row">9</th>
+              <td>
+			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address39">Billing</label>
+			</td>
+              <td><input type="range" id="same-address39" name="same-address39" min="0" max="100"></td>
+            </tr>
+            <tr>
+              <th scope="row">10</th>
+              <td>
+			  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address40">Shipping</label></td>
+              <td><input type="range" id="same-address40" name="same-address40" min="0" max="100"></td>
+            </tr>
+			
+			<tr class="table-info">
+              <th scope="row">11</th>
+              <td>
+			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-triangle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" d="M7.938 2.016a.146.146 0 0 0-.054.057L1.027 13.74a.176.176 0 0 0-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 0 0 .066-.017.163.163 0 0 0 .055-.06.176.176 0 0 0-.003-.183L8.12 2.073a.146.146 0 0 0-.054-.057A.13.13 0 0 0 8.002 2a.13.13 0 0 0-.064.016zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+				<path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+			</svg>
+			<label for="same-address41">Payment</label>
+			</td>
+              <td><input type="range" id="same-address41" name="same-address41" min="0" max="100"></td>
+            </tr>
+			
+          </tbody>
+          <!--Table body-->
+        </table>
+    <!--Table-->
+	</div>
+	<hr class="mb-4">
+    <div>
+        <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="check">Submit</button>
     </div>
     </div>
-
-    <footer class="my-5 pt-5 text-muted text-center text-small">
-        <div class="social d-flex justify-content-center">
-            <i class="fa fa-github" style="font-size:48px;color:black"><a href="https://github.com/shreeganeshasharma/SPC" class="mx-2"></a></i>
-            <i class="fa fa-github-alt" style="font-size:48px;color:#f090f0"><a href="https://github.com/SHEKI-gottalla" class="mx-2"></a></i>
+	</form>
+	
+	<hr class="mb-4">
+	
+	</div>
+	
+    <!-- Contact Section -->
+  <section id="contact" class="contact-section bg-black">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <h4 class="text-uppercase m-0">Address</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">Yuvaraja's College</div>
+              <div class="small text-black-50">
+                  <a href="gnu.html">
+                  GNU Manifesto</div>
+              </a>
+            </div>
+          </div>
         </div>
-        <p class="mb-1">WHATS THAT JACKET, MARGIELA?</p>
-    </footer>
 
+        <div class="col-md-6 mb-3 mb-md-0">
+          <div class="card py-4 h-100">
+            <div class="card-body text-center">
+              <h4 class="text-uppercase m-0">Email</h4>
+              <hr class="my-4">
+              <div class="small text-black-50">
+                <a href="mailto:shreeganeshasharma@gmail.com">shreeganeshasharma</a>
+                <br/>
+                <a href="https://github.com/SHEKI-gottalla">Rahul Shekar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
 
+      <div class="social d-flex justify-content-center">
+        <i class="fa fa-github" style="font-size:48px;color:black"><a href="https://github.com/shreeganeshasharma/SPC" class="mx-2"></a></i>
+        <i class="fa fa-github-alt" style="font-size:48px;color:f090f0"><a href="https://github.com/SHEKI-gottalla" class="mx-2"></a></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black small text-center text-white-50">
+    <div class="container">
+      Ya bish &copy; SQC 2020
+    </div>
+  </footer>
+
+	</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -381,7 +540,7 @@
 
     <!-- Custom scripts for this template -->
     <script src="../js/grayscale.min.js"></script>
-
+	
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
