@@ -10,9 +10,8 @@ In this project, we aim to implement 7 tools of Statistical Process Control, als
 """
 
 """import necessary modules for inbuilt functions"""
-#import numpy
+import numpy
 import scipy.stats as stat
-#import scipy
 import matplotlib.pyplot as plt
 import pandas as pd
 #import requests
@@ -54,13 +53,14 @@ for i in range(m):
 #print(rowTitles)
 #print(len(rowTitles))
 
+# 1*mn matrix of words
 Y = []
 for i in range(1,m):
 	for j in range(n):
 		Y.append(words[i][j])
 m = m - 1
 # print(m,n)
-#print(Y)
+# print(Y)
 
 for y in Y:
 	try:
@@ -72,6 +72,7 @@ for y in Y:
 # print(Y)
 # print(len(Y))
 
+# m*n matrix
 X = []
 for i in range(m):
 	X.append(Y[i*n:(i+1)*n])
@@ -163,12 +164,14 @@ def desc(arr):
 	filer += 1
 	return filer
 
-#Histogram of the entire data set
-#desc(Y)
+"""Descriptive Statistics and histogram"""
+# #Histogram of the entire data set
+# desc(X)
 
-#Histogram for some rows
-#for i in range(3):
-	#desc(X[i])
+# #Histogram for some rows
+# for i in range(4):
+	# desc(X[i])
+
 
 def scat(arr1, arr2):
 	plt.subplot(2,1,1)
@@ -176,10 +179,10 @@ def scat(arr1, arr2):
 	plt.subplot(2,1,2)
 	plt.plot(arr2)
 	plt.show()
-	plt.plot(arr1,arr2)
-	plt.show()
+	#plt.plot(arr1,arr2)
+	#plt.show()
+	
 	im = plt.figure()
-
 	for i in range(len(arr1)):
 		for j in range(len(arr2)):
 			plt.scatter(arr1[i],arr2[j])
@@ -189,29 +192,55 @@ def scat(arr1, arr2):
 	filer += 1
 	return filer
 
+"""Scatter plot"""
+# #scatter all vs all
+# #Too demanding as m*n increases
+# #plt.plot(X)
+# scat(X,X)
+
+# #scatter each row against itself and others
+# for i in range(2):
+	# for j in range(2):
+		# scat(X[i], X[j])
+
+# #put inside scat
+# #correlation matrix
+# df = pd.DataFrame(data=X)
+# print "Correlation Matrix"
+# print(df.corr())
+
+def control(arr):
+	xBar = stat.tmean(arr)
+	print("xBar")
+	print(xBar)
+	#R = max(arr) - min(arr)
+	#print(R)
+	S = stat.tvar(arr) ** 0.5
+	print("S")
+	print(S)
+	cl = numpy.empty(len(arr))
+	cl.fill(xBar)
+	ucl = numpy.empty(len(arr))
+	ucl.fill(xBar + 1.5 * S)
+	lcl = numpy.empty(len(arr))
+	lcl.fill(xBar - 1.5 * S)
+	im = plt.figure()
+	plt.plot(arr,marker = "o")
+	plt.plot(cl, color = 'g')
+	plt.plot(ucl, color = 'r')
+	plt.plot(lcl, color = 'r')
+	plt.show()
+	global filer
+	im.savefig("../sample/ctrl%d.pdf" %filer, bbox_inches="tight")
+	filer += 1
+	return filer
+
+# #3S Control chart for some rows
+# for i in range(4):
+	# control(X[i])
+	
 """
-#scatter all vs all
-#Too demanding as m*n increases
-#scat(Y,Y)
-
-#scatter each row against itself
-for i in range(2):
-	for j in range(2):
-		scat(X[i], X[j])
-
-"""
-#correlation matrix
-df = pd.DataFrame(data=X)
-#print "Correlation Matrix"
-print(df.corr())
-
-"""
-#def Pareto(name):
-	#par = open("/home/spikebuster/ycm/sample/pareto.csv", 'r')
-
-#Pareto(Y)
-
-#TBD on frontend
+Done - frontend
 algorithm CauseEffect
 	input:	list of causes
 	output:	fishbone diagram
@@ -222,6 +251,7 @@ algorithm CauseEffect
 			Method
 			Measurement
 			Environment
+TBD - backend flowchart
 
 algorithm Pareto
 	input: table of complaints(col0) and frequencies(col1) T
@@ -244,65 +274,17 @@ algorithm Pareto
 	else:
 		minor complaint
 
-algorithm ControlChart
-	input : m * n matrix X
-			1 x m * n vector Y
-	output: Control charts
-	#Pending
-	Variable - X bar, S, and R
-	Attribute - p and np, c and u for defective/not defective vs no of defects
+#def Pareto(name):
+	#par = open("/home/spikebuster/ycm/sample/pareto.csv", 'r')
 
-	Upper Control Limit
-	Lower Control Limit
-	6 Sigma Limits
-	Probabilistic limits
-	Specification limits
+#Pareto(Y)
 
 algorithm DefectConcentration
 	#from charts
 	Chance cause
 	Assignable cause
-	
-#Done on frontend
-algorithm CheckList
-	input:	list of complaints
-			list of to be done items
-			drop down
 
 #POST with form-encoded data
 #r = requests.post("http://localhost/spc.com/html/test.html", data=payload)
 #print(r.text)
-"""
-
-"""
-	make responsive
-	def filer(filename):
-		f = open("/home/spikebuster/ycm/sample/Sample.csv", 'r')
-		f = open("/home/spikebuster/ycm/sample/Sample.html", 'r')
-		f = open("/home/spikebuster/ycm/sample/Sample.xlsx", 'r')
-		f = open("/home/spikebuster/ycm/sample/Sample.pdf", 'r')
-"""
-
-"""
-	#Histogram for each column
-	for j in range(n):
-		for i in range(m):
-			plt.hist()
-		plt.show()
-"""
-
-"""
-Scat
-	output: scatter diagram, correlation, regression
-
-	#for i = 1:n in X plot(row[i])
-	#for j = 1:m in X plot(col[j])
-	#Scatter diagram
-	plot(X)
-	#for row[i], row[j] in X corr(row[i], row[j])
-	#for col[j], col[j] in X corr(col[i], col[j])
-	corr(X)
-	corr(Y)
-	linearRegression(X)
-	linearRegression(Y)
 """
