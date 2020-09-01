@@ -54,12 +54,13 @@ for i in range(m):
 #print(len(rowTitles))
 
 # 1*mn matrix of words
+#print(m,n)
 Y = []
 for i in range(1,m):
 	for j in range(n):
 		Y.append(words[i][j])
 m = m - 1
-# print(m,n)
+#print(m,n)
 # print(Y)
 
 for y in Y:
@@ -160,7 +161,7 @@ def desc(arr):
 	plt.hist(arr)
 	plt.show()
 	global filer
-	im.savefig("../sample/desc%d.pdf" %filer, bbox_inches="tight")
+	im.savefig("../sample/desc%d.png" %filer, bbox_inches="tight")
 	filer += 1
 	return filer
 
@@ -188,7 +189,7 @@ def scat(arr1, arr2):
 			plt.scatter(arr1[i],arr2[j])
 	plt.show()
 	global filer
-	im.savefig("../sample/scat%d.pdf" %filer, bbox_inches="tight")
+	im.savefig("../sample/scat%d.png" %filer, bbox_inches="tight")
 	filer += 1
 	return filer
 
@@ -205,9 +206,20 @@ def scat(arr1, arr2):
 
 # #put inside scat
 # #correlation matrix
-# df = pd.DataFrame(data=X)
-# print "Correlation Matrix"
-# print(df.corr())
+df = pd.DataFrame(data=X,columns = colTitles)
+im = plt.figure()
+# df.cumsum().plot()
+# df.plot.barh(stacked="True")
+# df.diff().hist(cumulative = True, alpha = 0.7, figsize=(4,4))
+# im.savefig("../sample/hist.png", bbox_inches="tight")
+# df.plot.box()
+# pd.plotting.scatter_matrix(df, alpha = 0.7, figsize=(4,4))
+# im.savefig("../sample/scat.png", bbox_inches="tight")
+# df.plot.pie(autopct='%.2f', subplots= True)
+# df.plot.area()
+plt.show()
+#print("Correlation Matrix")
+#print(df.corr())
 
 def control(arr):
 	xBar = stat.tmean(arr)
@@ -231,7 +243,7 @@ def control(arr):
 	plt.plot(lcl, color = 'r')
 	plt.show()
 	global filer
-	im.savefig("../sample/ctrl%d.pdf" %filer, bbox_inches="tight")
+	im.savefig("../sample/ctrl%d.png" %filer, bbox_inches="tight")
 	filer += 1
 	return filer
 

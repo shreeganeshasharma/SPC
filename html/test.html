@@ -71,7 +71,7 @@
         </div>
 
     <div class="col-sm order-md-1" id="test">
-	
+	<form class="needs-validation" action="../php/submit.php" method="POST" enctype="multipart/form-data">
     <div class="container-fluid">
 		<h4 class="mb-3 text-center">Numerical Data</h4>
         <form class="needs-validation" novalidate action="../php/upload.php" method="POST" enctype="multipart/form-data">
@@ -256,7 +256,7 @@
     <hr class="mb-4">
 	
 	<!-- Check List -->
-	<form class="needs-validation" action="../php/checklist.php" method="POST" enctype="multipart/form-data">
+	<form class="needs-validation" novalidate action="../php/checklist.php" method="POST" enctype="multipart/form-data">
     <div class="container-fluid">
     <div class="text-center">
         <h4 class="mb-3 text-center"> Check list </h4>
@@ -315,7 +315,7 @@
 	<hr class="mb-4">
 	
 	<!-- Pareto Chart -->
-	<form class="needs-validation" action="../php/pareto.php" method="POST" enctype="multipart/form-data">
+	<form class="needs-validation" novalidate action="../php/pareto.php" method="POST" enctype="multipart/form-data">
     <div class="container-fluid"> 
 	<div class="text-center">
         <h4 class="mb-3 text-center"> Pareto chart </h4>
@@ -475,24 +475,24 @@
         <button class="btn btn-primary btn-md btn-block" type="submit" value="Submit" name="submit">Submit</button>
     </div>
 		<hr class="mb-4">
+	</form>
 	</div>
 	
     <!-- Contact Section -->
-  <section id="contact" class="contact-section bg-black">
-    <div class="container bg-black">
-      <div class="social d-flex justify-content-center">
-        <i class="fa fa-github" style="font-size:48px;color:black"><a href="https://github.com/shreeganeshasharma/SPC" class="mx-2"></a></i>
+  <section id="contact" class="contact-section bg-light">
+    <div class="social d-flex bg-light justify-content-center">
+        <a href="https://github.com/shreeganeshasharma/SPC" class="mx-2"><i class="fa fa-github" style="font-size:48px;color:black"></i></a>
         <i class="fa fa-github-alt" style="font-size:48px;color:f090f0"><a href="https://github.com/SHEKI-gottalla" class="mx-2"></a></i>
-      </div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-black small text-center text-white-50">
+	
+	<!-- Footer -->
+  <footer class="bg-light small text-center text-black-50">
     <div class="container">
       Ya bish &copy; SQC 2020
     </div>
   </footer>
+  </section>
+
 
 	</div>
     <!-- Bootstrap core JavaScript
