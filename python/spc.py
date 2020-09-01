@@ -20,37 +20,37 @@ import pandas as pd
 f = open("../sample/Sample.txt", 'r')
 
 text = f.read()
-#print("text")
-#print(text)
+print("\ntext\n")
+print(text)
 #print(type(text))
 #print("len(text)")
 #print(len(text))
 
 lines = text.split()
-#print("lines")
-#print(lines)
+print("\nlines\n")
+print(lines)
 m = len(lines)
 #print(len(lines))
 
 words = []
 for line in lines:
 	words.append(line.split(','))
-#print("words")
-#print(words)
+print("\nwords\n")
+print(words)
 #print(len(words))
 
 colTitles = words[0]
 n = len(colTitles)
 n = n - 1
-#print("colTitles")
-#print(colTitles)
+print("\ncolTitles\n")
+print(colTitles)
 #print(len(colTitles))
 
 rowTitles = []
 for i in range(m):
 	rowTitles.append(words[i].pop(0))
-#print("rowTitles")
-#print(rowTitles)
+print("\nrowTitles\n")
+print(rowTitles)
 #print(len(rowTitles))
 
 # 1*mn matrix of words
@@ -77,8 +77,8 @@ for y in Y:
 X = []
 for i in range(m):
 	X.append(Y[i*n:(i+1)*n])
-# print("X")
-# print(X)
+print("\nData Frame - X\n")
+print(X)
 # print(len(X))
 m = len(X)
 n = len(X[1])
@@ -169,9 +169,9 @@ def desc(arr):
 # #Histogram of the entire data set
 # desc(X)
 
-# #Histogram for some rows
-# for i in range(4):
-	# desc(X[i])
+#Histogram for some rows
+for i in range(4):
+	desc(X[i])
 
 
 def scat(arr1, arr2):
@@ -194,32 +194,33 @@ def scat(arr1, arr2):
 	return filer
 
 """Scatter plot"""
-# #scatter all vs all
-# #Too demanding as m*n increases
-# #plt.plot(X)
-# scat(X,X)
+#scatter all vs all
+#Too demanding as m*n increases
+#plt.plot(X)
+scat(X,X)
 
-# #scatter each row against itself and others
-# for i in range(2):
-	# for j in range(2):
-		# scat(X[i], X[j])
+#scatter each row against itself and others
+for i in range(2):
+	for j in range(2):
+		scat(X[i], X[j])
 
 # #put inside scat
 # #correlation matrix
 df = pd.DataFrame(data=X,columns = colTitles)
 im = plt.figure()
-# df.cumsum().plot()
-# df.plot.barh(stacked="True")
-# df.diff().hist(cumulative = True, alpha = 0.7, figsize=(4,4))
-# im.savefig("../sample/hist.png", bbox_inches="tight")
-# df.plot.box()
-# pd.plotting.scatter_matrix(df, alpha = 0.7, figsize=(4,4))
-# im.savefig("../sample/scat.png", bbox_inches="tight")
-# df.plot.pie(autopct='%.2f', subplots= True)
-# df.plot.area()
+df.cumsum().plot()
+df.plot.barh(stacked="True")
+df.diff().hist(cumulative = True, alpha = 0.7, figsize=(4,4))
+im.savefig("../sample/hist.png", bbox_inches="tight")
+df.plot.box()
+pd.plotting.scatter_matrix(df, alpha = 0.7, figsize=(4,4))
+im.savefig("../sample/scat.png", bbox_inches="tight")
+df.plot.pie(autopct='%.2f', subplots= True)
+df.plot.area()
 plt.show()
-#print("Correlation Matrix")
-#print(df.corr())
+
+print("\nCorrelation Matrix\n")
+print(df.corr())
 
 def control(arr):
 	xBar = stat.tmean(arr)
@@ -247,9 +248,9 @@ def control(arr):
 	filer += 1
 	return filer
 
-# #3S Control chart for some rows
-# for i in range(4):
-	# control(X[i])
+#3S Control chart for some rows
+for i in range(4):
+	control(X[i])
 	
 """
 Done - frontend
